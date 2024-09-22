@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Farm Management System</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Chart.js Library -->
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <img src="image/logo.png" alt="Farm Management Logo" class="logo">
+            <h1>Farm Management Dashboard</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="register.html">Register</a></li>
+                    <li><a href="login.html">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="dashboard-container">
+            <h2>Welcome to your Farm Management Dashboard</h2>
+            <p>Here you can manage all aspects of your farm efficiently.</p>
+
+            <!-- Dashboard Grid for Navigation -->
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <h3>Farm Activities</h3>
+                    <p>Track and monitor daily farm activities.</p>
+                    <a href="#" class="cta-button-primary">View Activities</a>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>Livestock</h3>
+                    <p>Manage your livestock records and health status.</p>
+                    <a href="#" class="cta-button-primary">Manage Livestock</a>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>Crops</h3>
+                    <p>Track crop growth, yield, and performance.</p>
+                    <a href="#" class="cta-button-primary">Manage Crops</a>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>Expenses</h3>
+                    <p>Keep track of all farm expenses and budgets.</p>
+                    <a href="#" class="cta-button-primary">View Expenses</a>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>Reports</h3>
+                    <p>Generate detailed reports on farm activities and productivity.</p>
+                    <a href="#" class="cta-button-primary">Generate Reports</a>
+                </div>
+            </div>
+
+            <!-- Data Visualization Section -->
+            <section class="visualization-section">
+                <h2>Farm Data Insights</h2>
+                <div class="chart-container">
+                    <canvas id="expensesChart"></canvas>
+                    <!-- Canvas for Expenses Bar Chart -->
+                </div>
+                <div class="chart-container">
+                    <canvas id="cropYieldChart"></canvas>
+                    <!-- Canvas for Crop Yield Line Chart -->
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Farm Management System. All rights reserved.</p>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+    <script>
+        // Expenses Chart (Bar Chart)
+        const ctxExpenses = document.getElementById('expensesChart').getContext('2d');
+        const expensesChart = new Chart(ctxExpenses, {
+            type: 'bar',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May'],
+                datasets: [{
+                    label: 'Farm Expenses (USD)',
+                    data: [300, 500, 200, 400, 350],
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Crop Yield Chart (Line Chart)
+        const ctxCropYield = document.getElementById('cropYieldChart').getContext('2d');
+        const cropYieldChart = new Chart(ctxCropYield, {
+            type: 'line',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May'],
+                datasets: [{
+                    label: 'Crop Yield (kg)',
+                    data: [100, 200, 150, 300, 250],
+                    fill: false,
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
